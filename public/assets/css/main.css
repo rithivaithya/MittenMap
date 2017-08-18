@@ -3705,10 +3705,6 @@ img {
 	width: 100%;
 }
 
-#about {
-	text-align: center;
-	width:50%;
-	margin-left: 25%;
-	border:2px solid black;
-	background:grey;
-}
+/*.container { */
+/*	background-color: white;*/
+/*}*/
