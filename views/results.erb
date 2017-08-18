@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <div>
+    <title>The Mitten Map</title>
+  </div>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+
+  <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+
+
+
+
+  <body class="landing" style="background:grey;">
+    <!-- Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <header id="header">
+
+        <div class="inner">
+
+        </div>
+
+
+
+        <nav id="nav">
+          <ul>
+            <li><a href="/">Home</a></li>
+
+            <li><a href="/about">About</a></li>
+
+          </ul>
+        </nav>
+      </header>
+      <div id="main">
+        <div class="inner">
+
+          <div class="row">
+            <h1 style="display:inline;  margin-left:17%;"></h1>
+            <% if @answer!=nil%>
+              <% @answer.each do |product|%>
+                <!--<div> <br></br> </div>-->
+                <div id="cardholder" class="col-4">
+                  <div class="card" style="width: 20rem; margin-left:auto; margin-right:auto; margin-bottom: 30px; padding:30px; height:650px;">
+
+                    <h1 class="card-title" style="text-align:center;">
+                      <%=product["name"]%>
+                    </h1>
+                    <img class="results_image" style="width:100%; height:200px;"src="<%=product["image_url"]%>">
+
+                    <div class="card-body">
+                      <p>
+                        <%=product["location"]["display_address"].join("--")%>
+                      </p>
+                      <p class="card-text">
+                        <%=product["rating"]%>
+                      </p>
+
+                      <p></p>
+                      <%=product["price"]%>
+                        </p>
+                        <h6>
+                          <%=product["display_phone"]%>
+                        </h6>
+                        <% if product["is_closed"]==false %>
+                          <h4>OPEN</h4>
+                          <% end %>
+                            <% if product["is_closed"]==true %>
+                              <h4>OPEN</h4>
+                              <% end %>
+
+                                <a href="<%=product["url"]%>" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                  <% end %>
+
+
+
+                    <div class="row">
+                      <h1 style="display:inline-block; margin-left:65%;"></h1>
+
+                      <% if @news!=nil%>
+                        <% @news["response"]["docs"].each_with_index do |result,i| %>
+
+                          <div id="cardholder" class="col-6">
+                            <div class="card" style="width: 20rem; margin-left:auto; margin-right:auto; margin-bottom: 30px; padding:30px; height:650px;">
+
+                              <h4 class="card-title" style="text-align:center;">
+                                <%=result["headline"]["main"]%>
+                              </h4>
+
+                              <div class="card-body">
+                                <h3<%=result[ "source"]%></h3>
+                                  <p class="card-text">
+                                    <%=result["snippet"]%>
+                                  </p>
+
+                                  <a href="<%=result["web_url"]%>"> Click here to read this article</a><br>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="cardholder" class="col-6">
+                            <div class="card" style="width: 20rem; margin-left:auto; margin-right:auto; margin-bottom: 30px; padding:10px; height:650px;">
+
+                              <h4 class="card-title" style="text-align:center;">
+                                <%=@weather[i]["date"]%>
+                              </h4>
+
+                              <div class="card-body">
+                                <h4>high:
+                                  <%=@weather[i]["high"]%>
+                                </h4>
+                                <h4>low:
+                                  <%=@weather[i]["low"]%>
+                                </h4>
+
+                                <p class="card-text">
+                                  <h4>forecast:
+                                    <%=@weather[i]["text"]%>
+                                  </h4>
+                                </p>
+
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+
+
+                          <% end %>
+                            <% end %>
+                    </div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  </body>
+
+</html>
